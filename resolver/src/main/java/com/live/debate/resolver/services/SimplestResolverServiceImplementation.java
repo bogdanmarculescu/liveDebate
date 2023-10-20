@@ -18,7 +18,7 @@ public class SimplestResolverServiceImplementation implements ResolverService{
 
     public ResolvedRound resolveRound(CompletedRoundDTO completedRound, double dieRoll){
         ResolvedRound round = new ResolvedRound(
-                null,
+                1L,
                 completedRound.getId(),
                 completedRound.getCandidateA(),
                 completedRound.getCandidateB(),

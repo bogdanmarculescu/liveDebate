@@ -29,6 +29,9 @@ public class ResolverController {
                 "Andronikos",
                 "Alexios"
         );
-        return simplest.resolveRound(testInput);
+
+        ResolvedRound result = simplest.resolveRound(testInput);
+
+        return result;
     }
 }
