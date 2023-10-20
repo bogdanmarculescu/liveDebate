@@ -2,6 +2,7 @@ package com.live.debate.resolver.controllers;
 
 
 import com.live.debate.resolver.dtos.CompletedRoundDTO;
+import com.live.debate.resolver.model.ResolvedRound;
 import com.live.debate.resolver.services.SimplestResolverServiceImplementation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class ResolverController {
     // GET for testing
 
     @GetMapping
-    String justTestin(){
+    ResolvedRound justTestin(){
         //return "Yup, it's a test";
         CompletedRoundDTO testInput = new CompletedRoundDTO(
                 1L,
