@@ -5,9 +5,8 @@ import com.live.debate.resolver.dtos.CompletedRoundDTO;
 import com.live.debate.resolver.model.ResolvedRound;
 import com.live.debate.resolver.services.SimplestResolverServiceImplementation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/resolve")
@@ -18,6 +17,12 @@ public class ResolverController {
 
     // POST Completed round -> resolved
 
+    @PostMapping
+    ResolvedRound resolveRound(
+            @RequestBody CompletedRoundDTO completedRound){
+        ResolvedRound result = simplest.resolveRound(completedRound);
+        return result;
+    }
     // GET for testing
 
     @GetMapping
