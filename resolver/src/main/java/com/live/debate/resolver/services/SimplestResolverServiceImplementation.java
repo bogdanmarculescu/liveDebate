@@ -1,8 +1,11 @@
 package com.live.debate.resolver.services;
 
+import com.live.debate.resolver.clients.CandidateServiceClient;
+import com.live.debate.resolver.dtos.CandidateDTO;
 import com.live.debate.resolver.dtos.CompletedRoundDTO;
 import com.live.debate.resolver.model.ResolvedRound;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.index.CandidateComponentsIndex;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -10,6 +13,9 @@ import java.util.Random;
 @Service
 @RequiredArgsConstructor
 public class SimplestResolverServiceImplementation implements ResolverService{
+
+    private final CandidateServiceClient candidateServiceClient;
+
     @Override
     public ResolvedRound resolveRound(CompletedRoundDTO completedRound) {
         //return "Service basic test";
@@ -26,6 +32,7 @@ public class SimplestResolverServiceImplementation implements ResolverService{
                 "unresolved"
         );
 
+        CandidateDTO candidateDTO = candidateServiceClient.getCandidate(2L);
 
         if(dieRoll < 0.5){
             round.outcome = completedRound.getCandidateA() + " won";
@@ -39,6 +46,8 @@ public class SimplestResolverServiceImplementation implements ResolverService{
     public ResolvedRound resolveRoundRandom(CompletedRoundDTO completedRound){
         Random rand = new Random();
         double number = rand.nextDouble();
+
+        //TODO: call Candidates and get candidate info in here.
 
         return resolveRound(completedRound, number);
     }
