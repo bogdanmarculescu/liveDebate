@@ -14,7 +14,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class SimplestResolverServiceImplementation implements ResolverService{
 
-    private final CandidateServiceClient candidateServiceClient;
+    //private final CandidateServiceClient candidateServiceClient;
 
     @Override
     public ResolvedRound resolveRound(CompletedRoundDTO completedRound) {
@@ -32,7 +32,7 @@ public class SimplestResolverServiceImplementation implements ResolverService{
                 "unresolved"
         );
 
-        CandidateDTO candidateDTO = candidateServiceClient.getCandidate(2L);
+        //CandidateDTO candidateDTO = candidateServiceClient.getCandidate(2L);
 
         if(dieRoll < 0.5){
             round.outcome = completedRound.getCandidateA() + " won";
