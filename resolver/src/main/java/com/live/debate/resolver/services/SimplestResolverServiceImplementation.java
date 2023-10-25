@@ -52,6 +52,12 @@ public class SimplestResolverServiceImplementation implements ResolverService{
         double number = rand.nextDouble();
 
         //TODO: call Candidates and get candidate info in here.
+        // TODO: handle the case of missing/new candidates :)
+
+        CandidateDTO candidateA = candidateServiceClient.getCandidate(completedRound.getCandidateA());
+        log.info("Retrieved candidate A: " + candidateA.toString());
+        CandidateDTO candidateB = candidateServiceClient.getCandidate(completedRound.getCandidateB());
+        log.info("Retrieved candidate B: " + candidateB.toString());
 
         return resolveRound(completedRound, number);
     }

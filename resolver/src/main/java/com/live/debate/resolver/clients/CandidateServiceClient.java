@@ -31,5 +31,13 @@ public class CandidateServiceClient {
         return result.getBody();
     }
 
+    public CandidateDTO getCandidate(String name){
+        String callUrl = candidateServiceUrl + "/candidates/byname" + "?name=" + name;
+
+        ResponseEntity<CandidateDTO> result = restTemplate.getForEntity(callUrl, CandidateDTO.class);
+
+        return result.getBody();
+    }
+
 
 }
