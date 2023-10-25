@@ -23,16 +23,11 @@ public class OngoingRoundServiceImpl implements OngoingRoundService{
 
     @Override
     public String completeRound() {
-
-        // TODO: CompletedRoundEvent is created
-
         Round round = new Round();
-
-        // TODO: get the message sent!
 
         completedRoundPublisher.sendMessage(round);
 
-        return "Nothing so far";
+        return "Default round?";
     }
 
     @Override
