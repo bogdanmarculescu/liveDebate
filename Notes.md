@@ -75,7 +75,7 @@ Candidate - the way my system represent the user
 						^
 						|
 			
-					Rounds 
+					Rounds (Ongoing)
 
 			(Actions) 		
 							Resolution

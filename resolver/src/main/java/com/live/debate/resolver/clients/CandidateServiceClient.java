@@ -22,12 +22,7 @@ public class CandidateServiceClient {
     }
 
     public CandidateDTO getCandidate(Long id){
-        //TODO: contanct candidate service and retrieve one candidate
-        // build and HttpRequest
-        // "/candidates"
-        // GET
-        // with parameter id
-        // process the resulting object
+        //TODO: redo the candidate call with parameters other than url
 
         String callUrl = candidateServiceUrl + "/candidates" + "?id=" + id;
 

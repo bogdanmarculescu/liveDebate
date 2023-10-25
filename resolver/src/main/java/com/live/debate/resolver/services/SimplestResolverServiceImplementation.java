@@ -5,6 +5,7 @@ import com.live.debate.resolver.dtos.CandidateDTO;
 import com.live.debate.resolver.dtos.CompletedRoundDTO;
 import com.live.debate.resolver.model.ResolvedRound;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.index.CandidateComponentsIndex;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,10 @@ import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class SimplestResolverServiceImplementation implements ResolverService{
 
-    private final CandidateServiceClient candidateServiceClient;
+    //private final CandidateServiceClient candidateServiceClient;
 
     @Override
     public ResolvedRound resolveRound(CompletedRoundDTO completedRound) {
@@ -32,7 +34,9 @@ public class SimplestResolverServiceImplementation implements ResolverService{
                 "unresolved"
         );
 
-        CandidateDTO candidateDTO = candidateServiceClient.getCandidate(2L);
+        //CandidateDTO candidateDTO = candidateServiceClient.getCandidate(2L);
+
+        //log.info("Got candidate: " + candidateDTO.getName());
 
         if(dieRoll < 0.5){
             round.outcome = completedRound.getCandidateA() + " won";
