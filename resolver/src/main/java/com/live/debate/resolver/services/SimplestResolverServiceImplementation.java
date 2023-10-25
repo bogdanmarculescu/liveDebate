@@ -16,7 +16,7 @@ import java.util.Random;
 @Slf4j
 public class SimplestResolverServiceImplementation implements ResolverService{
 
-    //private final CandidateServiceClient candidateServiceClient;
+    private final CandidateServiceClient candidateServiceClient;
 
     @Override
     public ResolvedRound resolveRound(CompletedRoundDTO completedRound) {
@@ -34,9 +34,9 @@ public class SimplestResolverServiceImplementation implements ResolverService{
                 "unresolved"
         );
 
-        //CandidateDTO candidateDTO = candidateServiceClient.getCandidate(2L);
+        CandidateDTO candidateDTO = candidateServiceClient.getCandidate(2L);
 
-        //log.info("Got candidate: " + candidateDTO.getName());
+        log.info("Got candidate: " + candidateDTO.getName());
 
         if(dieRoll < 0.5){
             round.outcome = completedRound.getCandidateA() + " won";

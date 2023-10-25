@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+
 @Service
 public class CandidateServiceClient {
 
@@ -22,8 +24,6 @@ public class CandidateServiceClient {
     }
 
     public CandidateDTO getCandidate(Long id){
-        //TODO: redo the candidate call with parameters other than url
-
         String callUrl = candidateServiceUrl + "/candidates" + "?id=" + id;
 
         ResponseEntity<CandidateDTO> result = restTemplate.getForEntity(callUrl, CandidateDTO.class);
