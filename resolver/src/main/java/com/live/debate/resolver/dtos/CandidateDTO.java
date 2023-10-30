@@ -12,4 +12,5 @@ public class CandidateDTO {
     Long id;
     String name;
     String description;
+    int modifier;
 }
