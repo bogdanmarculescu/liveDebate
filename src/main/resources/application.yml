@@ -1,0 +1,62 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: gateway
+  config:
+    import: "optional:consul:"
+  cloud:
+    loadbalancer:
+      ribbon:
+        # Not needed since we excluded the dependency
+        enabled: false
+    consul:
+      enabled: true
+      discovery:
+        # Get only services that are passing the health check
+        query-passing: true
+      # From the legacy bootstrap.yml
+      config:
+        data-key: application.yml
+        prefix: config
+        format: yaml
+        default-context: defaults
+    gateway:
+      routes:
+        - id: candidates
+          uri: lb://candidates/
+          predicates:
+            - Path=/candidates,/candidates/**
+        - id: ongoing
+          uri: lb://ongoing/
+          predicates:
+            - Path=/ongoing/**
+        - id: resolver
+          uri: lb://resolver/
+          predicates:
+            - Path=/resolve
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedHeaders:
+              - "*"
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "OPTIONS"
+      default-filters:
+        - name: Retry
+          args:
+            retries: 3
+            methods: GET,POST
+# Uncomment the configuration below if you want to enable route matching logs
+#logging:
+#  level:
+#    org.springframework.cloud.gateway.handler.predicate: trace
+
+# From the legacy bootstrap.yml
+logging:
+  level:
+    org.springframework.amqp.rabbit.connection.CachingConnectionFactory: WARN
