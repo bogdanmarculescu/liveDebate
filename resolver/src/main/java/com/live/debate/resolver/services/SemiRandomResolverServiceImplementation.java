@@ -7,26 +7,28 @@ import com.live.debate.resolver.model.CompletedRound;
 import com.live.debate.resolver.model.ResolvedRound;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.index.CandidateComponentsIndex;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
-public class SimplestResolverServiceImplementation implements ResolverService{
+@Service("randomish")
+public class SemiRandomResolverServiceImplementation implements ResolverService{
 
     private final CandidateServiceClient candidateServiceClient;
 
     @Override
     public ResolvedRound resolveRound(CompletedRoundDTO completedRound) {
-        //return "Service basic test";
+        log.info("Round resolved courtesy of the SemiRandomResolver");
         CompletedRound round = processRound(completedRound);
         return resolveRoundRandom(round);
     }
 
     public ResolvedRound resolveRound(CompletedRound completedRound, double dieRoll){
+
+        //TODO: REMOVE hardcoding of id from Resolved Round
         ResolvedRound round = new ResolvedRound(
                 1L,
                 completedRound.getId(),
